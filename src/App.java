@@ -15,6 +15,10 @@ public class App extends PApplet {
     int circ4y = 0;
     int circ5x = 500;
     int circ5y = 0;
+    int startButtonX = 150;
+    int startButtonY = 200;
+    int startButtonWidth = 300;
+    int startButtonHeight = 150;
 
     public static void main(String[] args) {
         PApplet.main("App");
@@ -30,6 +34,15 @@ public class App extends PApplet {
 
     public void draw() {
         if (scene == 1) {
+            background(200, 200, 100);
+
+            rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight);
+            fill(100, 200, 0);
+            textSize(50);
+
+            text("Start", 250, 250);
+            fill(100, 100, 100);
+        } else if (scene == 2) {
             background(30, 30, 30);
             circle(circ1x, circ1y, diameter);
             fill(200, 0, 0);
@@ -64,22 +77,27 @@ public class App extends PApplet {
             circ5y = circ5y + 2;
             if (circ5y > 500)
                 scene += 1;
-        }
-        if (scene == 2) {
+        } else if (scene == 3) {
             background(0);
             textSize(50);
-            text("HAHA! YOU LOSE!", 3 + 100, 250);
-            textSize(40);
-            text("Circles tapped: " + count, 3 + 100, 100);
-            textSize(40);
-            text("Highscore: " + highscore, 3 + 100, 50);
-        }
-        if (scene == 3) {
-
+            text("HAHA! YOU LOSE!", 100, 150);
+            textSize(30);
+            text("Circles tapped: " + count, 50, 100);
+            textSize(30);
+            text("Highscore: " + highscore, 50, 50);
+            rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight);
+            text("Play again!", 250, 250);
+            fill(200, 300, 100);
         }
     }
 
     public void mousePressed() {
+        if (scene == 1 || scene == 3) {
+            if (mouseX > startButtonX && mouseX < startButtonX + startButtonWidth && mouseY > startButtonY
+                    && mouseY < startButtonY + startButtonHeight) {
+                scene = 2;
+            }
+        }
         float distance = dist(circ1x, circ1y, mouseX, mouseY);
         if (distance < diameter) {
             circ1x = (int) random(500);
@@ -110,8 +128,6 @@ public class App extends PApplet {
             circ5y = -100;
             count++;
         }
-        if (mousePressed && scene == 2) {
-            scene = 1;
-        }
+
     }
 }
