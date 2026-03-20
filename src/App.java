@@ -1,22 +1,22 @@
 import processing.core.*;
 
 public class App extends PApplet {
-    int highscore = 0;
-    float scene = 1;
-    int count = 0;
-    float diameter = 100 / 2;
-    PVector circ1 = new PVector(85, 0);
+    int highscore = 0; // for my starting mighscore
+    float scene = 1; //for my start screen
+    int count = 0; //for my circles tapped
+    float diameter = 100 / 2; //for my circle diameter
+    PVector circ1 = new PVector(85, 0); //these are for my circles
     PVector circ2 = new PVector(85 * 2, 0);
     PVector circ3 = new PVector(85 * 3, 0);
     PVector circ4 = new PVector(85 * 4, 0);
     PVector circ5 = new PVector(85 * 5, 0);
     PVector circ6 = new PVector(85 * 6, 0);
-    float startButtonX = 150;
-    float startButtonY = 200;
-    float startButtonWidth = 300;
-    float startButtonHeight = 150;
-    float speed = 2;
-    int lives = 3;
+    float startButtonX = 150; //for my y placement of start button
+    float startButtonY = 200; // for my x placement of start button
+    float startButtonWidth = 300; // for how wide it is
+    float startButtonHeight = 150; //for how tall it is
+    float speed = 2; //my starting speed
+    int lives = 3; //my lives per game run
 
     public static void main(String[] args) {
         PApplet.main("App");
